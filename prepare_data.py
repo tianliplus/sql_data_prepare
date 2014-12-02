@@ -27,7 +27,7 @@ fields_dsname = {
     "nbar_2": "test_2"
 }
 
-lai_files = filter(lambda x: "MCD15A2" in x, os.listdir(os.path.join(__datadir, "lai")))
+lai_files = list(filter(lambda x: "MCD15A2" in x, os.listdir(os.path.join(__datadir, "lai"))))
 print(lai_files)
 exit(0)
 tmp_data_file = open(__tmpfile, 'w')
