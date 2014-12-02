@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 __author__ = 'tianli'
 
 '''
@@ -27,7 +28,8 @@ fields_dsname = {
 }
 
 lai_files = filter(lambda x: "MCD15A2" in x, os.listdir(os.path.join(__datadir, "lai")))
-
+print(lai_files)
+exit(0)
 tmp_data_file = open(__tmpfile, 'w')
 
 def put_item(item):
