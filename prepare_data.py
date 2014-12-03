@@ -95,7 +95,7 @@ def put_field(ds, line, sample):
 
 
 def get_ds_value(ds, line, sample):
-    return ds[line][sample] if ds != False else ''
+    return ds[line][sample] if ds is None else ''
 
 
 def get_now_time():
@@ -141,46 +141,46 @@ while p1 < len(nbar_files) or p2 < len(lai_files) or p3 < len(laimod_files) or p
 
     if d1 == min_date:
         nbar_file = SD.SD(nbar_files[p1])
-        fields_ds["nbar_1"] = nbar_file.select(fields_dsname["nbar_1"])
-        fields_ds["nbar_2"] = nbar_file.select(fields_dsname["nbar_2"])
-        fields_ds["nbar_3"] = nbar_file.select(fields_dsname["nbar_3"])
-        fields_ds["nbar_4"] = nbar_file.select(fields_dsname["nbar_4"])
-        fields_ds["nbar_5"] = nbar_file.select(fields_dsname["nbar_5"])
-        fields_ds["nbar_6"] = nbar_file.select(fields_dsname["nbar_6"])
-        fields_ds["nbar_7"] = nbar_file.select(fields_dsname["nbar_7"])
+        fields_ds["nbar_1"] = nbar_file.select(fields_dsname["nbar_1"]).get()
+        fields_ds["nbar_2"] = nbar_file.select(fields_dsname["nbar_2"]).get()
+        fields_ds["nbar_3"] = nbar_file.select(fields_dsname["nbar_3"]).get()
+        fields_ds["nbar_4"] = nbar_file.select(fields_dsname["nbar_4"]).get()
+        fields_ds["nbar_5"] = nbar_file.select(fields_dsname["nbar_5"]).get()
+        fields_ds["nbar_6"] = nbar_file.select(fields_dsname["nbar_6"]).get()
+        fields_ds["nbar_7"] = nbar_file.select(fields_dsname["nbar_7"]).get()
 
         nbarqc_file = SD.SD(nbarqc_files[p1])
-        fields_ds["nbar_qc"] = nbarqc_file.select(fields_dsname["nbar_qc"])
+        fields_ds["nbar_qc"] = nbarqc_file.select(fields_dsname["nbar_qc"]).get()
 
         p1 += 1
     if d2 == min_date:
         lai_file = SD.SD(lai_files[p2])
-        fields_ds["lai"] = lai_file.select(fields_dsname["lai"])
-        fields_ds["lai_qc"] = lai_file.select(fields_dsname["lai_qc"])
+        fields_ds["lai"] = lai_file.select(fields_dsname["lai"]).get()
+        fields_ds["lai_qc"] = lai_file.select(fields_dsname["lai_qc"]).get()
 
         p2 += 1
 
     if d3 == min_date:
         laimod_file = SD.SD(laimod_files[p3])
-        fields_ds["laimod"] = laimod_file.select(fields_dsname["laimod"])
-        fields_ds["laimod_qc"] = laimod_file.select(fields_dsname["laimod_qc"])
+        fields_ds["laimod"] = laimod_file.select(fields_dsname["laimod"]).get()
+        fields_ds["laimod_qc"] = laimod_file.select(fields_dsname["laimod_qc"]).get()
 
         p3 += 1
 
     if d4 == min_date:
         vi_file = SD.SD(vi_files[p4])
-        fields_ds["ndvi"] = vi_file.select(fields_dsname["ndvi"])
-        fields_ds["evi"] = vi_file.select(fields_dsname["evi"])
-        fields_ds["vi_qc"] = vi_file.select(fields_dsname["vi_qc"])
+        fields_ds["ndvi"] = vi_file.select(fields_dsname["ndvi"]).get()
+        fields_ds["evi"] = vi_file.select(fields_dsname["evi"]).get()
+        fields_ds["vi_qc"] = vi_file.select(fields_dsname["vi_qc"]).get()
 
         p4 += 1
 
     if d5 == min_date:
         lst_file = SD.SD(lst_files[p5])
-        fields_ds["lst_day"] = lst_file.select(fields_dsname["lst_day"])
-        fields_ds["lstday_qc"] = lst_file.select(fields_dsname["lstday_qc"])
-        fields_ds["lst_night"] = lst_file.select(fields_dsname["lst_night"])
-        fields_ds["lstnight_qc"] = lst_file.select(fields_dsname["lstnight_qc"])
+        fields_ds["lst_day"] = lst_file.select(fields_dsname["lst_day"]).get()
+        fields_ds["lstday_qc"] = lst_file.select(fields_dsname["lstday_qc"]).get()
+        fields_ds["lst_night"] = lst_file.select(fields_dsname["lst_night"]).get()
+        fields_ds["lstnight_qc"] = lst_file.select(fields_dsname["lstnight_qc"]).get()
 
         p5 += 1
 
