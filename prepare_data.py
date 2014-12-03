@@ -16,6 +16,7 @@ Table : h25v03
 import os.path
 import sys
 import pyhdf.SD as SD
+import time
 
 # 数据文件路径
 __datadir = sys.argv[1]
@@ -97,12 +98,14 @@ def get_ds_value(ds, line, sample):
     return ds[line][sample] if ds != False else ''
 
 
+def get_now_time():
+    return time.strftime("%H:%M:%S",time.localtime(time.time()))
+
 count = 0
 
 # 循环写入
 while p1 < len(nbar_files) or p2 < len(lai_files) or p3 < len(laimod_files) or p4 < len(vi_files) or p5 < len(
         lst_files):
-    print(count)
     count += 1
     # 选出头指针中最小的日期
     d1 = get_modis_date(nbar_files[p1]) if p1 < len(nbar_files) else 9999999
@@ -183,7 +186,8 @@ while p1 < len(nbar_files) or p2 < len(lai_files) or p3 < len(laimod_files) or p
     # 写入文件记录
     for line in range(0, 1200):
         records = []
-
+        print("filecount: {0}, line: {1}".format(count, line))
+        print("time: {0}".format(get_now_time()))
         for sample in range(0, 1200):
             records.append('"{0}","{1}","{2}","{3}","{4}","{5}","{6}",'
                            '"{7}","{8}","{9}","{10}","{11}","{12}","{13}",'
@@ -208,7 +212,8 @@ while p1 < len(nbar_files) or p2 < len(lai_files) or p3 < len(laimod_files) or p
                                                   get_ds_value(fields_ds["lstday_qc"], line, sample),
                                                   get_ds_value(fields_ds["lst_night"], line, sample),
                                                   get_ds_value(fields_ds["lstnight_qc"], line, sample)))
-
+        print("All data readed in records, time: {0}".format(get_now_time()))
         tmp_data_file.write('\n'.join(records))
+        print("Wrote into file, time: {0}".format(get_now_time()))
 
 tmp_data_file.close()
