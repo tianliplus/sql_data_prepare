@@ -95,7 +95,7 @@ def put_field(ds, line, sample):
 
 
 def get_ds_value(ds, line, sample):
-    return ds[line][sample] if ds is not None else ''
+    return ds[line][sample] if ds is not None else '\\N'
 
 
 def get_now_time():
@@ -189,10 +189,10 @@ while p1 < len(nbar_files) or p2 < len(lai_files) or p3 < len(laimod_files) or p
     print("filecount: {0}, time: {1}".format(count, get_now_time()))
     for line in range(0, 1200):
         for sample in range(0, 1200):
-            tmp_data_file.write('"{0}","{1}","{2}","{3}","{4}","{5}","{6}",'
-                                '"{7}","{8}","{9}","{10}","{11}","{12}","{13}",'
-                                '"{14}","{15}","{16}","{17}","{18}","{19}",'
-                                '"{20}","{21}"\n'.format(min_date, line, sample,
+            tmp_data_file.write('{0}\t{1}\t{2}\t{3}\t{4}\t{5}\t{6}\t'
+                                '{7}\t{8}\t{9}\t{10}\t{11}\t{12}\t{13}\t'
+                                '{14}\t{15}\t{16}\t{17}\t{18}\t{19}\t'
+                                '{20}\t{21}\n'.format(min_date, line, sample,
                                                          get_ds_value(fields_ds["nbar_1"], line, sample),
                                                          get_ds_value(fields_ds["nbar_2"], line, sample),
                                                          get_ds_value(fields_ds["nbar_3"], line, sample),
