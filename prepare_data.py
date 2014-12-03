@@ -118,25 +118,25 @@ while p1 < len(nbar_files) or p2 < len(lai_files) or p3 < len(laimod_files) or p
 
     # 读取数据，将读取文件的指针下标+1
     fields_ds = {
-        "nbar_1": False,
-        "nbar_2": False,
-        "nbar_3": False,
-        "nbar_4": False,
-        "nbar_5": False,
-        "nbar_6": False,
-        "nbar_7": False,
-        "nbar_qc": False,
-        "lai": False,
-        "lai_qc": False,
-        "laimod": False,
-        "laimod_qc": False,
-        "ndvi": False,
-        "evi": False,
-        "vi_qc": False,
-        "lst_day": False,
-        "lstday_qc": False,
-        "lst_night": False,
-        "lstnight_qc": False
+        "nbar_1": None,
+        "nbar_2": None,
+        "nbar_3": None,
+        "nbar_4": None,
+        "nbar_5": None,
+        "nbar_6": None,
+        "nbar_7": None,
+        "nbar_qc": None,
+        "lai": None,
+        "lai_qc": None,
+        "laimod": None,
+        "laimod_qc": None,
+        "ndvi": None,
+        "evi": None,
+        "vi_qc": None,
+        "lst_day": None,
+        "lstday_qc": None,
+        "lst_night": None,
+        "lstnight_qc": None
     }
 
     if d1 == min_date:
