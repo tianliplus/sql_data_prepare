@@ -92,13 +92,16 @@ def put_field(ds, line, sample):
         print("ds is false")
         put_item("")
 
+
 def get_ds_value(ds, line, sample):
     return ds[line][sample] if ds != False else ''
+
 
 count = 0
 
 # 循环写入
-while p1 < len(nbar_files) or p2 < len(lai_files) or p3 < len(laimod_files) or p4 < len(vi_files) or p5 < len(lst_files):
+while p1 < len(nbar_files) or p2 < len(lai_files) or p3 < len(laimod_files) or p4 < len(vi_files) or p5 < len(
+        lst_files):
     print(count)
     count += 1
     # 选出头指针中最小的日期
@@ -179,30 +182,33 @@ while p1 < len(nbar_files) or p2 < len(lai_files) or p3 < len(laimod_files) or p
 
     # 写入文件记录
     for line in range(0, 1200):
+        records = []
+
         for sample in range(0, 1200):
-            record = '"{0}","{1}","{2}","{3}","{4}","{5}","{6}","{7}","{8}",' \
-                     '"{9}","{10}","{11}","{12}","{13}","{14}","{15}","{16}",' \
-                     '"{17}","{18}","{19}","{20}","{21}"\n'\
-                .format(min_date, line, sample,
-                        get_ds_value(fields_ds["nbar_1"], line, sample),
-                        get_ds_value(fields_ds["nbar_2"], line, sample),
-                        get_ds_value(fields_ds["nbar_3"], line, sample),
-                        get_ds_value(fields_ds["nbar_4"], line, sample),
-                        get_ds_value(fields_ds["nbar_5"], line, sample),
-                        get_ds_value(fields_ds["nbar_6"], line, sample),
-                        get_ds_value(fields_ds["nbar_7"], line, sample),
-                        get_ds_value(fields_ds["nbar_qc"], line, sample),
-                        get_ds_value(fields_ds["lai"], line, sample),
-                        get_ds_value(fields_ds["lai_qc"], line, sample),
-                        get_ds_value(fields_ds["laimod"], line, sample),
-                        get_ds_value(fields_ds["laimod_qc"], line, sample),
-                        get_ds_value(fields_ds["ndvi"], line, sample),
-                        get_ds_value(fields_ds["evi"], line, sample),
-                        get_ds_value(fields_ds["vi_qc"], line, sample),
-                        get_ds_value(fields_ds["lst_day"], line, sample),
-                        get_ds_value(fields_ds["lstday_qc"], line, sample),
-                        get_ds_value(fields_ds["lst_night"], line, sample),
-                        get_ds_value(fields_ds["lstnight_qc"], line, sample))
-            tmp_data_file.write(record)
+            records.append('"{0}","{1}","{2}","{3}","{4}","{5}","{6}",'
+                           '"{7}","{8}","{9}","{10}","{11}","{12}","{13}",'
+                           '"{14}","{15}","{16}","{17}","{18}","{19}",'
+                           '"{20}","{21}"'.format(min_date, line, sample,
+                                                  get_ds_value(fields_ds["nbar_1"], line, sample),
+                                                  get_ds_value(fields_ds["nbar_2"], line, sample),
+                                                  get_ds_value(fields_ds["nbar_3"], line, sample),
+                                                  get_ds_value(fields_ds["nbar_4"], line, sample),
+                                                  get_ds_value(fields_ds["nbar_5"], line, sample),
+                                                  get_ds_value(fields_ds["nbar_6"], line, sample),
+                                                  get_ds_value(fields_ds["nbar_7"], line, sample),
+                                                  get_ds_value(fields_ds["nbar_qc"], line, sample),
+                                                  get_ds_value(fields_ds["lai"], line, sample),
+                                                  get_ds_value(fields_ds["lai_qc"], line, sample),
+                                                  get_ds_value(fields_ds["laimod"], line, sample),
+                                                  get_ds_value(fields_ds["laimod_qc"], line, sample),
+                                                  get_ds_value(fields_ds["ndvi"], line, sample),
+                                                  get_ds_value(fields_ds["evi"], line, sample),
+                                                  get_ds_value(fields_ds["vi_qc"], line, sample),
+                                                  get_ds_value(fields_ds["lst_day"], line, sample),
+                                                  get_ds_value(fields_ds["lstday_qc"], line, sample),
+                                                  get_ds_value(fields_ds["lst_night"], line, sample),
+                                                  get_ds_value(fields_ds["lstnight_qc"], line, sample)))
+
+        tmp_data_file.write('\n'.join(records))
 
 tmp_data_file.close()
