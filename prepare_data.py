@@ -95,7 +95,7 @@ def put_field(ds, line, sample):
 
 
 def get_ds_value(ds, line, sample):
-    return ds[line][sample] if ds is None else ''
+    return ds[line][sample] if ds is not None else ''
 
 
 def get_now_time():
@@ -185,8 +185,9 @@ while p1 < len(nbar_files) or p2 < len(lai_files) or p3 < len(laimod_files) or p
         p5 += 1
 
     # 写入文件记录
+    
+    print("filecount: {0}, time: {1}".format(count, get_now_time()))
     for line in range(0, 1200):
-        print("filecount: {0}, line: {1}, time: {2}".format(count, line, get_now_time()))
         for sample in range(0, 1200):
             tmp_data_file.write('"{0}","{1}","{2}","{3}","{4}","{5}","{6}",'
                                 '"{7}","{8}","{9}","{10}","{11}","{12}","{13}",'
