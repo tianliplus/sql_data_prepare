@@ -26,8 +26,8 @@
       <file leaf-file-name="prepare_data.py" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/prepare_data.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.7241379" vertical-offset="690" max-vertical-offset="3345">
-              <caret line="67" column="31" selection-start-line="67" selection-start-column="31" selection-end-line="67" selection-end-column="31" />
+            <state vertical-scroll-proportion="-4.551724" vertical-offset="3285" max-vertical-offset="3720">
+              <caret line="87" column="25" selection-start-line="87" selection-start-column="25" selection-end-line="87" selection-end-column="25" />
               <folding>
                 <element signature="e#969#983#0" expanded="true" />
               </folding>
@@ -333,8 +333,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/prepare_data.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7241379" vertical-offset="690" max-vertical-offset="3345">
-          <caret line="67" column="31" selection-start-line="67" selection-start-column="31" selection-end-line="67" selection-end-column="31" />
+        <state vertical-scroll-proportion="-4.551724" vertical-offset="3285" max-vertical-offset="3720">
+          <caret line="87" column="25" selection-start-line="87" selection-start-column="25" selection-end-line="87" selection-end-column="25" />
           <folding>
             <element signature="e#969#983#0" expanded="true" />
           </folding>

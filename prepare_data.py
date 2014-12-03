@@ -60,12 +60,34 @@ def get_modis_date(fullname):
     return int(filename[9:16])
 
 
+
 nbar_files = get_files("MCD43B4.", "nbar")
 nbarqc_files = get_files("MCD43B2.", "nbar_qc")
 lai_files = get_files("MCD15A2.", "lai")
 laimod_files = get_files("MOD15A2.", "lai-mod")
 vi_files = get_files("MOD13A2.", "ndvi")
 lst_files = get_files("MOD11A2.", "lst")
+
+
+nbar_files = get_files("MCD43B4", "nbar")
+nbar_files.sort()
+nbarqc_files = get_files("MCD43B2", "nbar_qc")
+nbarqc_files.sort()
+lai_files = get_files("MCD15A2", "lai")
+lai_files.sort()
+laimod_files = get_files("MOD15A2", "lai-mod")
+laimod_files.sort()
+vi_files = get_files("MOD13A2", "ndvi")
+vi_files.sort()
+lst_files = get_files("MOD11A2", "lst")
+lst_files.sort()
+
+print(nbar_files[0:10])
+print(nbarqc_files[0:10])
+print(lai_files[0:10])
+print(laimod_files[0:10])
+print(vi_files[0:10])
+exit(0)
 
 # p1 - p5 分别指向上面5个files数组的下标首位，将文件名中日期位上 *最小* 且 *相等* 的文件读取并写入到一条文件记录当中
 p1 = p2 = p3 = p4 = p5 = 0
@@ -131,8 +153,8 @@ while p1 < len(nbar_files) or p2 < len(lai_files) or p3 < len(laimod_files) or p
         fields_ds["nbar_6"] = nbar_file.select(fields_dsname["nbar_6"])
         fields_ds["nbar_7"] = nbar_file.select(fields_dsname["nbar_7"])
 
-        nbarqc_file = SD.SD(nbar_files[p1])
-        fields_ds["nbar_qc"] = nbar_file.select(fields_dsname["nbar_qc"])
+        nbarqc_file = SD.SD(nbarqc_files[p1])
+        fields_ds["nbar_qc"] = nbarqc_file.select(fields_dsname["nbar_qc"])
 
         p1 += 1
     if d2 == min_date:
@@ -165,6 +187,8 @@ while p1 < len(nbar_files) or p2 < len(lai_files) or p3 < len(laimod_files) or p
         fields_ds["lstnight_qc"] = lst_file.select(fields_dsname["lstnight_qc"])
 
         p5 += 1
+    print("min_date: {0}, d1: {1}, d2: {2}, d3: {3}, d4: {4}, d5: {5}".format(min_date, d1, d2, d3, d4, d5))
+    exit(0)
     # 写入文件记录
     for line in range(0, 1200):
         for sample in range(0, 1200):
