@@ -84,9 +84,12 @@ def put_field(ds, line, sample):
     else:
         put_item("")
 
+count = 0
 
 # 循环写入
 while p1 < len(nbar_files) or p2 < len(lai_files) or p3 < len(laimod_files) or p4 < len(vi_files) or p5 < len(lst_files):
+    print(count)
+    count += 1
     # 选出头指针中最小的日期
     d1 = get_modis_date(nbar_files[p1]) if p1 < len(nbar_files) else 9999999
     d2 = get_modis_date(lai_files[p2]) if p2 < len(lai_files) else 9999999
