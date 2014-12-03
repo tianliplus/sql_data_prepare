@@ -60,12 +60,12 @@ def get_modis_date(fullname):
     return int(filename[9:16])
 
 
-nbar_files = get_files("MCD43B4", "nbar")
-nbarqc_files = get_files("MCD43B2", "nbar_qc")
-lai_files = get_files("MCD15A2", "lai")
-laimod_files = get_files("MOD15A2", "lai-mod")
-vi_files = get_files("MOD13A2", "ndvi")
-lst_files = get_files("MOD11A2", "lst")
+nbar_files = get_files("MCD43B4.", "nbar")
+nbarqc_files = get_files("MCD43B2.", "nbar_qc")
+lai_files = get_files("MCD15A2.", "lai")
+laimod_files = get_files("MOD15A2.", "lai-mod")
+vi_files = get_files("MOD13A2.", "ndvi")
+lst_files = get_files("MOD11A2.", "lst")
 
 # p1 - p5 分别指向上面5个files数组的下标首位，将文件名中日期位上 *最小* 且 *相等* 的文件读取并写入到一条文件记录当中
 p1 = p2 = p3 = p4 = p5 = 0
