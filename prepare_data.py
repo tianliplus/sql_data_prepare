@@ -211,6 +211,6 @@ while p1 < len(nbar_files) or p2 < len(lai_files) or p3 < len(laimod_files) or p
                                                          get_ds_value(fields_ds["lstday_qc"], line, sample),
                                                          get_ds_value(fields_ds["lst_night"], line, sample),
                                                          get_ds_value(fields_ds["lstnight_qc"], line, sample)))
-        print("Line wrote into file, time: {0}".format(get_now_time()))
+        print("Line wrote into file.")
 
 tmp_data_file.close()
