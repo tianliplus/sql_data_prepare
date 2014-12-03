@@ -85,9 +85,11 @@ def put_item(item):
 
 
 def put_field(ds, line, sample):
-    if ds:
+    if ds != False:
+        print("ds is true")
         put_item(ds[line][sample])
     else:
+        print("ds is false")
         put_item("")
 
 count = 0
@@ -171,6 +173,10 @@ while p1 < len(nbar_files) or p2 < len(lai_files) or p3 < len(laimod_files) or p
         fields_ds["lstnight_qc"] = lst_file.select(fields_dsname["lstnight_qc"])
 
         p5 += 1
+
+
+    for ds in fields_ds:
+        print(ds)
     # 写入文件记录
     for line in range(0, 1200):
         for sample in range(0, 1200):
@@ -220,5 +226,7 @@ while p1 < len(nbar_files) or p2 < len(lai_files) or p3 < len(laimod_files) or p
             put_field(fields_ds["lstnight_qc"], line, sample)
 
             tmp_data_file.write("\n")
+
+            exit(0)
 
 tmp_data_file.close()
